@@ -367,10 +367,10 @@ export default function ClientLandingPage() {
 
           {/* Header Action Buttons */}
           <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* Cart Button */}
+            {/* Cart Button (apenas Desktop/Tablet, oculto em Mobile) */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative flex h-10 sm:h-11 items-center gap-2 rounded-xl sm:rounded-2xl border border-emerald-900/15 bg-emerald-50 px-3 sm:px-4 text-xs sm:text-sm font-bold text-emerald-950 transition hover:bg-emerald-100 active:scale-95"
+              className="relative hidden md:flex h-10 sm:h-11 items-center gap-2 rounded-xl sm:rounded-2xl border border-emerald-900/15 bg-emerald-50 px-3 sm:px-4 text-xs sm:text-sm font-bold text-emerald-950 transition hover:bg-emerald-100 active:scale-95"
               aria-label="Abrir Carrinho"
             >
               <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-800 shrink-0" />
@@ -1477,40 +1477,26 @@ export default function ClientLandingPage() {
 
       {/* 15. FLOATING STICKY MOBILE BOTTOM BAR (HIGH CONVERSION) */}
       <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-emerald-900/10 bg-white/95 backdrop-blur-lg px-4 py-3 md:hidden shadow-xl">
-        <div className="flex items-center gap-2.5">
-          {cartCount > 0 ? (
-            <button
-              onClick={() => setIsCartOpen(true)}
-              className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 py-3 text-xs font-black text-emerald-950 shadow-md active:scale-95"
-            >
-              <ShoppingCart className="h-4 w-4" />
-              <span>Ver Carrinho ({cartCount} itens · R$ {cartTotal.toFixed(2).replace(".", ",")})</span>
-            </button>
-          ) : (
-            <a
-              href={receitaWhatsAppLink}
-              target="_blank"
-              rel="noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-800 py-3 text-xs font-bold text-white shadow-md active:scale-95"
-            >
-              <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <FileText className="h-4 w-4 text-amber-300" />
-              <span>Enviar Receita no WhatsApp</span>
-            </a>
-          )}
+        {cartCount > 0 ? (
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-800/20 bg-emerald-50 text-emerald-900 active:bg-emerald-100"
-            aria-label="Ver Carrinho"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 py-3 text-xs sm:text-sm font-black text-emerald-950 shadow-md active:scale-95 transition"
           >
             <ShoppingCart className="h-4 w-4" />
-            {cartCount > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-amber-500 text-[10px] font-bold text-emerald-950">
-                {cartCount}
-              </span>
-            )}
+            <span>Ver Carrinho ({cartCount} {cartCount === 1 ? "item" : "itens"} · R$ {cartTotal.toFixed(2).replace(".", ",")})</span>
           </button>
-        </div>
+        ) : (
+          <a
+            href={receitaWhatsAppLink}
+            target="_blank"
+            rel="noreferrer"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-800 py-3 text-xs sm:text-sm font-bold text-white shadow-md active:scale-95 transition"
+          >
+            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <FileText className="h-4 w-4 text-amber-300" />
+            <span>Enviar Receita no WhatsApp</span>
+          </a>
+        )}
       </div>
     </div>
   );
