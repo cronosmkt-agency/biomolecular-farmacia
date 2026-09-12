@@ -1498,6 +1498,22 @@ export default function ClientLandingPage() {
           </a>
         )}
       </div>
+
+      {/* BOTÃO FLUTUANTE WHATSAPP - FECHAR COMPRA DO SITE COM A CRONOS */}
+      <a
+        href="https://wa.me/5521964639999?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Biomolecular%20Farm%C3%A1cia%20e%20gostaria%20de%20ver%20como%20funciona%20para%20fechar%20a%20compra%20dele%20com%20voc%C3%AA."
+        target="_blank"
+        rel="noreferrer"
+        className="group fixed bottom-20 lg:bottom-6 right-5 sm:right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-2xl shadow-emerald-500/50 transition-all duration-300 hover:scale-110 hover:bg-emerald-600 active:scale-95"
+        aria-label="Falar sobre a compra deste site no WhatsApp"
+        title="Falar sobre a compra deste site"
+      >
+        <span className="absolute -inset-1 animate-ping rounded-full bg-emerald-400 opacity-30 pointer-events-none" />
+        <span className="absolute right-16 hidden rounded-xl bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white whitespace-nowrap opacity-0 shadow-xl transition-opacity group-hover:opacity-100 lg:block pointer-events-none">
+          Comprar este site
+        </span>
+        <MessageCircle className="relative h-7 w-7" />
+      </a>
     </div>
   );
 }
